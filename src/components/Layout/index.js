@@ -1,6 +1,6 @@
-import { Link, Outlet } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
 import styled from "styled-components";
-import {ResetStyle, GlobalStyle} from '../globalStyle'
 
 const AppWrapper = styled.div``
 const NavWrapper = styled.nav`
@@ -13,28 +13,30 @@ const NavWrapper = styled.nav`
 const NavBlock = styled.div`
   &:hover {
     & a {
-      color: rgba(46, 68, 78, 0.5);
+      color: rgba(46, 68, 78, 1);
     }
   }
   & a {
     display: block;
-    color: rgb(46, 68, 78);
+    color: ${props => props.focus ? 'rgba(46, 68, 78, 1)' : 'rgba(46, 68, 78, 0.5)'};
     font-size: 20px;
     font-weight: 800;
   }
   & + & {
     margin-left: 10px;
+    @media screen and (min-width: 768px) {
+      margin-left: 30px;
+    }
   }
 `
 
 function Layout() {
+  let pathname = useLocation().pathname
   return (
     <AppWrapper>
-      <ResetStyle/>
-      <GlobalStyle/>
       <NavWrapper>
-        <NavBlock><Link to="/listing">ListingPage</Link></NavBlock>
-        <NavBlock><Link to="/watchlist">WatchlistPage</Link></NavBlock>
+        <NavBlock focus={pathname === '/listing'}><Link to="/listing">ListingPage</Link></NavBlock>
+        <NavBlock focus={pathname === '/watchlist'}><Link to="/watchlist">WatchlistPage</Link></NavBlock>
       </NavWrapper>
       <Outlet/>
     </AppWrapper>

@@ -2,6 +2,9 @@ import styled from 'styled-components'
 
 const PaginationWrapper = styled.div`
   display: flex;
+  font-size: 20px;
+  align-items: center;
+  height: 30px;
 `
 const PageButton = styled.div`
   cursor: pointer;
@@ -15,6 +18,8 @@ const PageNumberWrapper = styled.div`
 `
 const PageNumber = styled.div`
   font-weight: ${props => props.center ? 800 : 400};
+  margin: 0 10px;
+  cursor: pointer;
 `
 
 function changePage(type, page, setPage, totalPages) {
