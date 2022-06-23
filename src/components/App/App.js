@@ -18,8 +18,8 @@ function App() {
     <BrowserRouter basename="/opensea">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route path="listing" element={<ListingPage />} />
-          <Route path="watchlist" element={<WatchListPage />} />
+          <Route path="/listing" element={<ListingPage />} />
+          <Route path="/watchlist" element={<WatchListPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
