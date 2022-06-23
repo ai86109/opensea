@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import styled from 'styled-components'
-import { getAssets } from '../../webAPI'
 import Pagination from "../Common/Pagination";
 import Asset from "../Common/Asset";
+import styled from 'styled-components'
+import { getAssets } from '../../webAPI'
 
 const Loading = styled.div`
   margin-top: 200px;

@@ -34,7 +34,7 @@ function Layout() {
   return (
     <AppWrapper>
       <NavWrapper>
-        <NavBlock focus={pathname === '/listing'}><Link to="/listing">ListingPage</Link></NavBlock>
+        <NavBlock focus={pathname === '/'}><Link to="/">ListingPage</Link></NavBlock>
         <NavBlock focus={pathname === '/watchlist'}><Link to="/watchlist">WatchlistPage</Link></NavBlock>
       </NavWrapper>
       <Outlet/>

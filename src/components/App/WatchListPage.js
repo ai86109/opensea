@@ -87,7 +87,7 @@ function WatchListPage() {
         <AssetBlank/>
         <AssetBlank/>
       </WatchListWrapper>
-      {<Pagination page={page} setPage={setPage} showPageNumber={showPageNumber} totalPages={totalPages} />}
+      <Pagination page={page} setPage={setPage} showPageNumber={showPageNumber} totalPages={totalPages} />
     </WatchListPageWrapper>
   );
 }
