@@ -1,10 +1,10 @@
 {
   "files": {
-    "main.js": "/opensea/static/js/main.6429f00d.js",
+    "main.js": "/opensea/static/js/main.463e9dc4.js",
     "index.html": "/opensea/index.html",
-    "main.6429f00d.js.map": "/opensea/static/js/main.6429f00d.js.map"
+    "main.463e9dc4.js.map": "/opensea/static/js/main.463e9dc4.js.map"
   },
   "entrypoints": [
-    "static/js/main.6429f00d.js"
+    "static/js/main.463e9dc4.js"
   ]
 }
