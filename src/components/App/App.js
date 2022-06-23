@@ -15,9 +15,9 @@ function App() {
   },[])
 
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/opensea">
       <Routes>
-        <Route path="/opensea" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route path="listing" element={<ListingPage />} />
           <Route path="watchlist" element={<WatchListPage />} />
         </Route>
