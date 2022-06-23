@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { useSelector } from 'react-redux'
 import styled from 'styled-components'
 import Pagination from "../Common/Pagination";
@@ -54,6 +54,8 @@ const Value = styled.div`
   }
 `
 
+const MemoPagination = memo(Pagination)
+
 function WatchListPage() {
   const [data, setData] = useState([])
   const [page, setPage] = useState(1)
@@ -77,7 +79,7 @@ function WatchListPage() {
       <Title>Watchlist</Title>
       <ValueWrapper>
         <Value>Total watched values: ${totalPrice}</Value>
-        <Value>Total watched assets sold price: $10000</Value>
+        <Value>Total watched assets sold price:</Value>
       </ValueWrapper>
       <WatchListWrapper>
         {data.map(list => (
@@ -87,7 +89,7 @@ function WatchListPage() {
         <AssetBlank/>
         <AssetBlank/>
       </WatchListWrapper>
-      <Pagination page={page} setPage={setPage} showPageNumber={showPageNumber} totalPages={totalPages} />
+      <MemoPagination page={page} setPage={setPage} showPageNumber={showPageNumber} totalPages={totalPages} />
     </WatchListPageWrapper>
   );
 }

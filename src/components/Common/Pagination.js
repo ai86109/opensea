@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import PropTypes from 'prop-types';
 
 const PaginationWrapper = styled.div`
   display: flex;
@@ -42,7 +43,7 @@ function Pagination({page, setPage, showPageNumber, totalPages = 999}) {
   return (
     <>
     {pageNumber &&
-        <PaginationWrapper>
+      <PaginationWrapper>
         <PageButton type="left" onClick={() => changePage("pageup", page, setPage, totalPages)} />
         <PageNumberWrapper>
           {pageNumber.map(page_num => (
@@ -57,3 +58,10 @@ function Pagination({page, setPage, showPageNumber, totalPages = 999}) {
 }
 
 export default Pagination
+
+Pagination.propTypes = {
+  page: PropTypes.number.isRequired,
+  setPage: PropTypes.func.isRequired,
+  showPageNumber: PropTypes.number.isRequired,
+  totalPages: PropTypes.number
+}

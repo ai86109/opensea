@@ -3,6 +3,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import styled from 'styled-components'
 import { addList, removeList } from '../../redux/reducers/watchlistSlice'
 import { setDataToken } from '../../webAPI'
+import PropTypes from 'prop-types';
 
 const Bold_Text = styled.p`
   font-weight: 800;
@@ -54,22 +55,19 @@ const AssetInfoUpper = styled.div`
 const AssetName = styled.div`
   width: 60%;
 `
-const AssetNameTitle = styled(Bold_Text)``
+const AssetTitle = styled(Bold_Text)``
 const AssetNameContent = styled(Ellipsis)``
 const AssetPrice = styled.div``
-const AssetPriceTitle = styled(Bold_Text)``
 const AssetPriceContent = styled.div``
 const AssetAddress = styled.div`
   margin-top: 5px;
 `
-const AssetAddressTitle = styled(Bold_Text)``
 const AssetAddressContent = styled.div`
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `
 const AssetLastSoldPrice = styled(AssetAddress)``
-const AssetLastSoldPriceTitle = styled(AssetAddressTitle)``
 const AssetLastSoldPriceContent = styled(AssetAddressContent)``
 const Button = styled.button`
   color: white;
@@ -79,15 +77,15 @@ const Button = styled.button`
   padding: 7px 0;
 `
 
-function handleClick(value, dispatch) {
+function handleClick({id, image_url, name, num_sales, asset_contract:{address}, last_sale:{payment_token:{usd_price:last_sold_price}, total_price}}, dispatch) {
   dispatch(addList({
-    id: value.id,
-    image_url: value.image_url,
-    name: value.name,
-    num_sales: value.num_sales,
-    address: value.asset_contract.address,
-    last_sold_price: value.last_sale.payment_token.usd_price,
-    total_price: value.last_sale.total_price
+    id,
+    image_url,
+    name,
+    num_sales,
+    address,
+    last_sold_price,
+    total_price
   }))
 }
 
@@ -106,21 +104,21 @@ function Asset({value, type}) {
       <AssetInfo>
         <AssetInfoUpper>
           <AssetName>
-            <AssetNameTitle>Name</AssetNameTitle>
+            <AssetTitle>Name</AssetTitle>
             <AssetNameContent>{value.name}</AssetNameContent>
           </AssetName>
           <AssetPrice>
-            <AssetPriceTitle>Price</AssetPriceTitle>
+            <AssetTitle>Price</AssetTitle>
             <AssetPriceContent>{value.num_sales}</AssetPriceContent>
           </AssetPrice>
         </AssetInfoUpper>
         <AssetAddress>
-          <AssetAddressTitle>Address</AssetAddressTitle>
+          <AssetTitle>Address</AssetTitle>
           <AssetAddressContent>{value.asset_contract?.address ?? value.address}</AssetAddressContent>
         </AssetAddress>
         {type === 'watchlist' ?
           <AssetLastSoldPrice>
-            <AssetLastSoldPriceTitle>Last Sold Price(USD)</AssetLastSoldPriceTitle>
+            <AssetTitle>Last Sold Price(USD)</AssetTitle>
             <AssetLastSoldPriceContent>{value.last_sold_price}</AssetLastSoldPriceContent>
           </AssetLastSoldPrice> : ""
         }
@@ -137,3 +135,18 @@ function Asset({value, type}) {
 }
 
 export default Asset;
+
+Asset.propTypes = {
+  value: PropTypes.shape({
+    id: PropTypes.number,
+    image_url: PropTypes.string,
+    name: PropTypes.string,
+    num_sales: PropTypes.number,
+    asset_contract: PropTypes.shape({
+      address: PropTypes.string
+    }),
+    address: PropTypes.string,
+    last_sold_price: PropTypes.string
+  }),
+  type: PropTypes.string.isRequired
+}

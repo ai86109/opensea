@@ -12,7 +12,7 @@ function App() {
 
   useEffect(() => {
     dispatch(setList(getCache()))
-  })
+  }, [dispatch])
 
   return (
     <BrowserRouter basename="/opensea">
