@@ -22,10 +22,10 @@ You may also see any lint errors in the console.
 
 ## Usage
 
-`Listing page`\n
+`Listing page`<br>
 你可以在列表頁搜尋到依照 sales count 排序的 NFT 商品，並可點選按鈕將有興趣的商品，加入到 watchlist page。
 
-`Watchlist page`\n
+`Watchlist page`<br>
 你加入的商品將會顯示在此頁面，並且保存到你下一次回來時，若想要刪除此商品可以點選下方按鈕即可取消關注。
 ## Technologies used
 - Front-End Frameworks
